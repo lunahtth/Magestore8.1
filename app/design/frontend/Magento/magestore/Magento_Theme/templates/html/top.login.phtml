@@ -1,0 +1,42 @@
+<div class="login-top">
+    <ul class="list-top-links">
+        <li class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Login</button>
+            <div class="dropdown-menu">
+                <?php //include ($block->getTemplateFile('Magento_Customer::form/login.mini.phtml')) ?>
+                <?php echo $this->getLayout()->createBlock("Magento\Customer\Block\Form\Login")->setTemplate("Magento_Customer::form/login.mini.phtml")->toHtml(); ?>
+            </div>
+        </li>
+        <li><a href="">Support</a></li>
+    </ul>
+</div>
+<script type="text/javascript">// <![CDATA[
+    require([
+        'jquery',
+        'bootstrap',
+        'carousel'
+    ], function ($) {
+        $(document).ready(function () {
+            $('.dropdown-toggle').dropdown();
+
+            $(".dropdown").hover(
+                function () {
+                    $('.dropdown-menu', this).stop().fadeIn("fast");
+                },
+                function () {
+                    $('.dropdown-menu', this).stop().fadeOut("fast");
+                });
+            $("#bannerslider-magestore81").owlCarousel({
+                items: 1,
+                itemsDesktop: [1199, 1],
+                itemsDesktopSmall: [991, 1],
+                itemsTablet: [767, 1],
+                itemsMobile: [479, 1],
+                autoPlay: false,
+                navigation: true,
+                navigationText: ["", ""]
+            });
+        });
+    });
+
+    // ]]></script>

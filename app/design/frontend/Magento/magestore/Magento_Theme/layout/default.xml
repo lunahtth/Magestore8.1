@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page layout="magestore" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="default_head_blocks"/>
+
+    <referenceContainer name="page.wrapper">
+        <container name="header.container" as="header_container" label="Page Header Container"  htmlTag="header" htmlClass="page-header" before="main.content"/>
+        <container name="page.top" as="page_top" label="After Page Header" after="header.container"/>
+        <container name="footer-container" as="footer" before="before.body.end" label="Page Footer Container" htmlTag="footer" htmlClass="page-footer" />
+
+    </referenceContainer>
+    <!-- Header -->
+    <referenceContainer name="header-wrapper">
+        <container name="header-wrapper-left" as="header-wrapper-left" htmlTag="div" htmlClass="header-left col-md-3 col-sm-5 col-xs-4">
+            <block class="Magento\Theme\Block\Html\Header\Logo" name="logo">
+                <arguments>
+                    <argument name="logo_img_width" xsi:type="number">292</argument>
+                    <argument name="logo_img_height" xsi:type="number">43</argument>
+                </arguments>
+            </block>
+        </container>
+        <container name="header-wrapper-center" as="header-wrapper-center" htmlTag="div" htmlClass="header-center col-md-5 col-sm-7 hidden-xs">
+            <block class="Magento\Framework\View\Element\Template" name="top.search" as="topSearch" template="Magento_Search::form.mini.phtml" />
+        </container>
+        <container name="header-wrapper-right" as="header-wrapper-right" htmlTag="div" htmlClass="header-right col-md-4 col-sm-12 col-xs-8">
+            <block class="Magento\Theme\Block\Html\Header" name="top.login" as="topLogin" template="html/top.login.phtml" />
+        </container>
+
+    </referenceContainer>
+
+    <referenceContainer name="compare-link-wrapper" display="false" />
+
+    <move element="header.panel.wrapper" destination="destination"/>
+
+    <referenceContainer name="footer">
+        <!--block class="Magento\Store\Block\Switcher" name="store_switcher" as="store_switcher" after="footer_links" template="switch/stores.phtml"/-->
+        <block class="Magento\Theme\Block\Html\Footer" name="footerlist" as="footerlist" template="html/footerlist.phtml" />
+    </referenceContainer>
+    <referenceBlock name="navigation.sections" remove="true"/>
+    <referenceBlock name="footer_links" remove="true"/>
+    <referenceBlock name="report.bugs" remove="true"/>
+    <referenceBlock name="form.subscribe" remove="true"/>
+    <referenceBlock name="store_switcher" remove="true"/>
+    <move element="copyright" destination="before.body.end"/>
+</page>
